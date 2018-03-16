@@ -35,6 +35,7 @@ int main(int argc, char** argv)
   while (cont != EOF)
   {
     cont = fgetc(file);
+		//Instead of printing each character, Call check
 		check(cont, file);
   }
   fclose(file);
@@ -42,6 +43,10 @@ int main(int argc, char** argv)
 }
 
 
+//Check function looks for "<script" beginning tag
+//Will print to screen if at any time "<script" is broken
+//Then calls inScript to look for ending tag /script> removing all
+//The text in between <script and /script> if beginning tag passed
 void check(int c, FILE *file)
 {
 	int one, two, three, four, five, six;
@@ -79,7 +84,7 @@ void check(int c, FILE *file)
 void inScript(FILE *file)
 {
 
-	int one, two, three, four, five;
+	int one, two, three, four, five, six, seven, eight;
 	one = fgetc(file);
 	two = fgetc(file);
 	three = fgetc(file);
